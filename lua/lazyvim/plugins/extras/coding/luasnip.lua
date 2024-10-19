@@ -4,10 +4,10 @@ return {
     lazy = true,
     build = (not LazyVim.is_win())
         and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-      or nil,
+        or nil,
     dependencies = {
       {
-        "rafamadriz/friendly-snippets",
+        -- "rafamadriz/friendly-snippets",
         config = function()
           require("luasnip.loaders.from_vscode").lazy_load()
         end,
@@ -41,14 +41,16 @@ return {
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
         end,
-        expr = true, silent = true, mode = "i",
+        expr = true,
+        silent = true,
+        mode = "i",
       },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+      { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
-  {
-    "garymjr/nvim-snippets",
-    enabled = false,
-  },
+  -- {
+  --   "garymjr/nvim-snippets",
+  --   enabled = false,
+  -- },
 }

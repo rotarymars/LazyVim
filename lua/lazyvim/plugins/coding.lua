@@ -87,11 +87,11 @@ return {
     "nvim-cmp",
     dependencies = {
       {
-        "garymjr/nvim-snippets",
+        -- "garymjr/nvim-snippets",
         opts = {
           friendly_snippets = true,
         },
-        dependencies = { "rafamadriz/friendly-snippets" },
+        -- dependencies = { "rafamadriz/friendly-snippets" },
       },
     },
     opts = function(_, opts)
@@ -168,16 +168,16 @@ return {
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           }),
           f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-          d = { "%f[%d]%d+" }, -- digits
-          e = { -- Word with case
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),       -- class
+          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },           -- tags
+          d = { "%f[%d]%d+" },                                                          -- digits
+          e = {                                                                         -- Word with case
             { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
             "^().*()$",
           },
-          i = LazyVim.mini.ai_indent, -- indent
-          g = LazyVim.mini.ai_buffer, -- buffer
-          u = ai.gen_spec.function_call(), -- u for "Usage"
+          i = LazyVim.mini.ai_indent,                                -- indent
+          g = LazyVim.mini.ai_buffer,                                -- buffer
+          u = ai.gen_spec.function_call(),                           -- u for "Usage"
           U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
         },
       }
@@ -199,8 +199,8 @@ return {
     opts = {
       library = {
         { path = "luvit-meta/library", words = { "vim%.uv" } },
-        { path = "LazyVim", words = { "LazyVim" } },
-        { path = "lazy.nvim", words = { "LazyVim" } },
+        { path = "LazyVim",            words = { "LazyVim" } },
+        { path = "lazy.nvim",          words = { "LazyVim" } },
       },
     },
   },
